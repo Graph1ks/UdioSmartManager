@@ -1,0 +1,482 @@
+[
+  {
+    "name": "1. 70s Stadium Anthem",
+    "value": "Epic Polished Classic Rock, Uplifting Soaring Electric Guitar, Triumphant Hammond Organ, Powerful Male Vocalist, USA, 1970s"
+  },
+  {
+    "name": "2. Gritty Blues Rock Revival",
+    "value": "Raw Gritty Blues Rock, Soulful Overdriven Electric Guitar, Angsty Wailing Harmonica, Raspy Male Vocalist, USA, 1960s"
+  },
+  {
+    "name": "3. High-Energy 77 Punk",
+    "value": "Raw Fast Punk Rock, Rebellious Buzzsaw Electric Guitar, Energetic Driving Bass, Shouted Male Vocalist, UK, 1970s"
+  },
+  {
+    "name": "4. Melodic Skate Punk",
+    "value": "Polished Catchy Pop Punk, Angsty Fast Electric Guitar Riffs, Fun Tight Drums, Melodic Male Vocalist, USA, 1990s"
+  },
+  {
+    "name": "5. Seattle Sound Despair",
+    "value": "Sludgy Heavy Grunge, Angsty Distorted Electric Guitar, Apathetic Heavy Bass, Strained Male Vocalist, USA, 1990s"
+  },
+  {
+    "name": "6. Acoustic Grunge Lament",
+    "value": "Raw Intimate Grunge, Melancholic Acoustic Guitar, Reflective Cello, Soulful Female Vocalist, USA, 1990s"
+  },
+  {
+    "name": "7. 60s Acid Trip Rock",
+    "value": "Swirling Reverb-drenched Psychedelic Rock, Mind-bending Fuzz Guitar, Groovy Farfisa Organ, Ethereal Male Vocalist, UK, 1960s"
+  },
+  {
+    "name": "8. Modern Neo-Psych Haze",
+    "value": "Dreamy Lo-fi Neo-Psychedelia, Introspective Shimmering Guitars, Hypnotic Vintage Synths, Washed-out Female Vocalist, Australia, Contemporary"
+  },
+  {
+    "name": "9. Jangly 80s College Rock",
+    "value": "Bright Clean Jangle Pop, Hopeful Rickenbacker Guitar, Quirky Clean Basslines, Slightly Detached Male Vocalist, USA, 1980s"
+  },
+  {
+    "name": "10. Brooding Post-Punk Revival",
+    "value": "Dark Angular Post-Punk Revival, Anxious Sharp Guitars, Intense Driving Bass, Baritone Male Vocalist, UK, 2000s"
+  },
+  {
+    "name": "11. Epic Cinematic Crescendo",
+    "value": "Expansive Layered Post-Rock, Soaring Shimmering Guitars, Melancholic Dynamic Drums, Instrumental Focus, Iceland, Contemporary"
+  },
+  {
+    "name": "12. Minimalist Ambient Textures",
+    "value": "Sparse Atmospheric Post-Rock, Introspective Delayed Guitars, Ethereal Subtle Synths, Instrumental Focus, Germany, Contemporary"
+  },
+  {
+    "name": "13. Driving Berlin Warehouse Techno",
+    "value": "Hard Minimal Techno, Hypnotic 909 Kick, Intense Industrial Synths, Instrumental Focus, Germany, Contemporary"
+  },
+  {
+    "name": "14. Melodic Ethereal Techno Journey",
+    "value": "Polished Atmospheric Melodic Techno, Uplifting Lush Synth Pads, Dreamy Arpeggiated Leads, Ethereal Female Vocalist, Netherlands, Contemporary"
+  },
+  {
+    "name": "15. Classic Chicago Jackin House",
+    "value": "Raw Groovy Chicago House, Energetic 909 Drums, Funky Repetitive Bassline, Soulful Male Vocalist, USA, 1980s"
+  },
+  {
+    "name": "16. Deep Progressive House Waves",
+    "value": "Smooth Atmospheric Deep House, Hypnotic Lush Pads, Melancholic Evolving Synths, Breathy Female Vocalist, Netherlands, Contemporary"
+  },
+  {
+    "name": "17. Vast Glacial Soundscape",
+    "value": "Cold Expansive Dark Ambient, Desolate Droning Synths, Mysterious Field Recordings, Instrumental Focus, Norway, Contemporary"
+  },
+  {
+    "name": "18. Warm Sunrise Meditation Ambient",
+    "value": "Lush Ethereal New Age, Peaceful Soft Synth Pads, Uplifting Gentle Chimes, Instrumental Focus, USA, Contemporary"
+  },
+  {
+    "name": "19. 80s Neon Drive Outrun",
+    "value": "Bright Punchy Synthwave, Nostalgic Gated Reverb Drums, Energetic Driving Synth Bass, Filtered Male Vocalist, USA, 1980s"
+  },
+  {
+    "name": "20. Dark Dystopian Darksynth",
+    "value": "Gritty Menacing Darksynth, Aggressive Distorted Synths, Ominous Heavy Drums, Robotic Male Vocalist, Germany, Contemporary"
+  },
+  {
+    "name": "21. High-Energy Neurofunk DnB",
+    "value": "Technical Aggressive Neurofunk, Intense Complex Basslines, Driving Fast Breakbeats, MC Male Vocalist, UK, Contemporary"
+  },
+  {
+    "name": "22. Liquid Soulful DnB Cruise",
+    "value": "Smooth Melodic Liquid Funk, Uplifting Rolling Basslines, Chill Jazzy Synths, Ethereal Female Vocalist, UK, Contemporary"
+  },
+  {
+    "name": "23. Uplifting Euphoric Trance Anthem",
+    "value": "Epic Polished Uplifting Trance, Euphoric Supersaw Leads, Soaring Lush Pads, Angelic Female Vocalist, Germany, 2000s"
+  },
+  {
+    "name": "24. Dark Psychedelic Goa Trance",
+    "value": "Acidic Hypnotic Goa Trance, Mystical Bubbling 303 Lines, Intense Layered Synths, Chanted Male Vocalist, Israel, 1990s"
+  },
+  {
+    "name": "25. 80s NWOBHM Glory",
+    "value": "Raw Energetic NWOBHM, Powerful Twin Lead Guitars, Heroic Galloping Bass, High-Pitched Male Vocalist, UK, 1980s"
+  },
+  {
+    "name": "26. Modern Groove Metal Stomp",
+    "value": "Heavy Punchy Groove Metal, Aggressive Down-Tuned Guitars, Headbanging Chunky Riffs, Guttural Male Vocalist, USA, Contemporary"
+  },
+  {
+    "name": "27. Raw Scandinavian Forest Black Metal",
+    "value": "Lo-fi Trebly Raw Black Metal, Cold Tremolo-picked Guitars, Misanthropic Blast Beats, Shrieking Male Vocalist, Norway, 1990s"
+  },
+  {
+    "name": "28. Atmospheric Cascadian Black Metal",
+    "value": "Expansive Reverb-laden Atmospheric Black Metal, Melancholic Layered Guitars, Nature-inspired Acoustic Passages, Distant Male Vocalist, USA, Contemporary"
+  },
+  {
+    "name": "29. Classic Sabbathian Doom Riffage",
+    "value": "Heavy Fuzzy Traditional Doom Metal, Gloomy Slow Heavy Guitar Riffs, Stoner Fuzz Bass, Wailing Male Vocalist, UK, 1970s"
+  },
+  {
+    "name": "30. Funeral Doom Desolation",
+    "value": "Crushing Atmospheric Funeral Doom Metal, Depressing Extremely Slow Guitars, Nihilistic Pipe Organ, Deep Growled Male Vocalist, Finland, Contemporary"
+  },
+  {
+    "name": "31. Epic Technical Prog Metal Odyssey",
+    "value": "Polished Complex Progressive Metal, Ambitious Virtuosic Guitar Solos, Technical Odd Time Signatures, Melodic Male Vocalist, USA, Contemporary"
+  },
+  {
+    "name": "32. Atmospheric Djentle Prog",
+    "value": "Clean Percussive Djent, Introspective Low-Tuned 7 String Guitars, Groovy Syncopated Rhythms, Clean Melodic Male Vocalist, UK, Contemporary"
+  },
+  {
+    "name": "33. 2000s Melodic Metalcore Breakdown",
+    "value": "Punchy Polished Melodic Metalcore, Angsty Chugging Guitar Riffs, Energetic Heavy Breakdowns, Screamed Male Vocalist, USA, 2000s"
+  },
+  {
+    "name": "34. Modern Dissonant Deathcore",
+    "value": "Brutal Technical Deathcore, Aggressive Ultra Low-Tuned Guitars, Chaotic Blast Beats, Inhuman Growled Male Vocalist, USA, Contemporary"
+  },
+  {
+    "name": "35. Viking Battle Folk Metal Hymn",
+    "value": "Epic Raw Viking Metal, Heroic Heavy Guitars, Warlike Accordion, Harsh Male Vocalist, Norway, Contemporary"
+  },
+  {
+    "name": "36. Celtic Forest Folk Metal Dance",
+    "value": "Lively Melodic Celtic Metal, Joyful Electric Guitars, Mythical Tin Whistle, Clean Female Vocalist, Ireland, Contemporary"
+  },
+  {
+    "name": "37. Fast Paced 40s Bebop Session",
+    "value": "Vintage Live Feel Bebop, Energetic Saxophone, Complex Trumpet, Scat Male Vocalist, USA, 1940s"
+  },
+  {
+    "name": "38. Cool & Intricate Bebop Night",
+    "value": "Smooth Intimate Cool Jazz, Sophisticated Muted Trumpet, Laid-back Alto Sax, Instrumental Focus, USA, 1950s"
+  },
+  {
+    "name": "39. 70s Electric Jazz Fusion Power",
+    "value": "Bold Dynamic Jazz Fusion, Experimental Electric Guitar, Groovy Fender Rhodes, Instrumental Focus, USA, 1970s"
+  },
+  {
+    "name": "40. Modern Atmospheric Jazz Fusion",
+    "value": "Polished Ethereal Jazz Fusion, Introspective Fretless Bass, Cinematic Soprano Sax, Wordless Female Vocalist, France, Contemporary"
+  },
+  {
+    "name": "41. 80s Sunset Smooth Jazz Groove",
+    "value": "Polished Warm Smooth Jazz, Relaxed Soprano Saxophone, Romantic Electric Piano, Soulful Female Vocalist, USA, 1980s"
+  },
+  {
+    "name": "42. Contemporary Urban Smooth Jazz Chill",
+    "value": "Crisp Modern Smooth Jazz, Laid-back Muted Trumpet, Sophisticated Nylon String Guitar, Instrumental Focus, USA, Contemporary"
+  },
+  {
+    "name": "43. Roaring 30s Swing Big Band",
+    "value": "Vintage Energetic Swing, Joyful Full Brass Section, Danceable Saxophone Section, Crooning Male Vocalist, USA, 1930s"
+  },
+  {
+    "name": "44. Modern Cinematic Big Band Score",
+    "value": "Epic Polished Big Band, Dramatic Large Brass Section, Powerful Saxophone Section, Powerful Choir, USA, Contemporary"
+  },
+  {
+    "name": "45. Film Noir Smoky Bar Dark Jazz",
+    "value": "Atmospheric Grainy Dark Jazz, Mysterious Muted Trumpet, Melancholic Tenor Saxophone, Sultry Female Vocalist, France, Contemporary"
+  },
+  {
+    "name": "46. Industrial Dystopian Dark Jazz",
+    "value": "Harsh Experimental Dark Jazz, Anxious Distorted Saxophone, Unsettling Droning Synths, Processed Male Vocalist, Germany, Contemporary"
+  },
+  {
+    "name": "47. Intimate Singer-Songwriter Confession",
+    "value": "Warm Acoustic Contemporary Folk, Heartfelt Acoustic Guitar, Reflective Gentle Piano, Sincere Female Vocalist, USA, Contemporary"
+  },
+  {
+    "name": "48. Indie Folk Ensemble Gathering",
+    "value": "Layered Organic Indie Folk, Uplifting Acoustic Guitars, Communal Banjo, Harmonizing Male Vocalist, Canada, Contemporary"
+  },
+  {
+    "name": "49. 60s Protest Folk Rock Anthem",
+    "value": "Bright Driving Folk Rock, Hopeful 12-String Acoustic Guitar, Activist Electric Guitar, Earnest Male Vocalist, USA, 1960s"
+  },
+  {
+    "name": "50. Dark Electric Folk Rock Ballad",
+    "value": "Atmospheric Gritty Folk Rock, Melancholic Electric Guitar with Tremolo, Intense Organ, Brooding Female Vocalist, UK, Contemporary"
+  },
+  {
+    "name": "51. Lively Irish Pub Session",
+    "value": "Raw Energetic Irish Folk, Joyful Fiddle, Celebratory Tin Whistle, Spirited Male Vocalist, Ireland, Traditional"
+  },
+  {
+    "name": "52. Ethereal Scottish Highland Ballad",
+    "value": "Atmospheric Haunting Scottish Folk, Melancholic Celtic Harp, Storytelling Low Whistle, Clear Female Vocalist, UK, Traditional"
+  },
+  {
+    "name": "53. Fast Pickin Appalachian Bluegrass",
+    "value": "Acoustic Bright Bluegrass, Energetic Banjo, Virtuosic Fiddle, High Lonesome Male Vocalist, USA, Traditional"
+  },
+  {
+    "name": "54. Progressive Newgrass Exploration",
+    "value": "Polished Experimental Progressive Bluegrass, Introspective Banjo, Complex Mandolin, Smooth Female Vocalist, USA, Contemporary"
+  },
+  {
+    "name": "55. Neofolk Ritual Chant",
+    "value": "Austere Martial Neofolk, Somber Acoustic Guitar, Apocalyptic Military Drums, Declamatory Male Vocalist, Germany, Contemporary"
+  },
+  {
+    "name": "56. American Gothic Folk Noir",
+    "value": "Dusty Sparse Dark Folk, Haunting Acoustic Guitar, Murder Ballad Banjo, Gritty Female Vocalist, USA, Contemporary"
+  },
+  {
+    "name": "57. 90s Golden Age Boom Bap",
+    "value": "Gritty Sample-Heavy Boom Bap, Confident MPC Drums, Streetwise Chopped Samples, Lyrical Male Vocalist, USA, 1990s"
+  },
+  {
+    "name": "58. Modern Chill Boom Bap Vibe",
+    "value": "Smooth Lo-fi Boom Bap, Relaxed Mellow Drum Loops, Introspective Rhodes Piano Samples, Conversational Female Vocalist, Japan, Contemporary"
+  },
+  {
+    "name": "59. Aggressive Dark Trap Banger",
+    "value": "Hard-hitting Distorted Trap, Menacing 808 Bass, Energetic Hi-Hat Rolls, Autotuned Male Vocalist, USA, Contemporary"
+  },
+  {
+    "name": "60. Ethereal Cloud Rap / Emo Trap",
+    "value": "Hazy Atmospheric Cloud Rap, Melancholic Washed-out Synths, Dreamy Muffled 808s, Autotuned Female Vocalist, Sweden, Contemporary"
+  },
+  {
+    "name": "61. Rainy Day Lo-Fi Study Beats",
+    "value": "Grainy Warm Lo-Fi Hip Hop, Chill Dusty Drum Samples, Nostalgic Jazzy Piano Loops, Instrumental Focus, Japan, Contemporary"
+  },
+  {
+    "name": "62. Lo-Fi Hip Hop with Introspective Bars",
+    "value": "Mellow Intimate Lo-Fi Hip Hop, Reflective Soft Drums, Calm Smooth Bass, Soft-spoken Male Vocalist, France, Contemporary"
+  },
+  {
+    "name": "63. 90s Native Tongues Jazz Rap",
+    "value": "Smooth Sample-based Jazz Rap, Positive Live Jazz Samples, Conscious Laid-back Drums, Articulate Male Vocalist, USA, 1990s"
+  },
+  {
+    "name": "64. Modern Abstract Jazz Rap Experiment",
+    "value": "Experimental Textural Abstract Hip Hop, Introspective Dissonant Jazz Samples, Enigmatic Glitchy Beats, Poetic Female Vocalist, UK, Contemporary"
+  },
+  {
+    "name": "65. Classic 90s Horrorcore Nightmare",
+    "value": "Dark Grimy Horrorcore, Disturbing Ominous Samples, Aggressive Hard Drums, Graphic Male Vocalist, USA, 1990s"
+  },
+  {
+    "name": "66. Cinematic Modern Horrorcore Tale",
+    "value": "Atmospheric Suspenseful Horrorcore, Unsettling Horror Movie Score Synths, Theatrical Eerie Soundscapes, Storytelling Female Vocalist, Canada, Contemporary"
+  },
+  {
+    "name": "67. Bright 80s New Wave Synth-Pop",
+    "value": "Clean Catchy New Wave, Optimistic Analog Synths, Danceable LinnDrum, Melodic Male Vocalist, UK, 1980s"
+  },
+  {
+    "name": "68. Dark Moody Contemporary Synth-Pop",
+    "value": "Atmospheric Brooding Synth-Pop, Melancholic Deep Synth Bass, Intense Cold Pads, Detached Female Vocalist, Sweden, Contemporary"
+  },
+  {
+    "name": "69. Twee C86 Indie Pop Charm",
+    "value": "Lo-fi Jangly Twee Pop, Innocent Bright Guitars, Quirky Simple Basslines, Sweet Female Vocalist, UK, 1980s"
+  },
+  {
+    "name": "70. Sophisticated Chamber Pop Elegance",
+    "value": "Lush Orchestral Chamber Pop, Romantic Piano, Bittersweet Strings, Melodramatic Male Vocalist, USA, Contemporary"
+  },
+  {
+    "name": "71. 90s Eurodance Pop Anthem",
+    "value": "Energetic Anthemic Eurodance, Euphoric Pumping Synths, Fun 909 Drums, Powerful Female Vocalist, Germany, 1990s"
+  },
+  {
+    "name": "72. Modern Minimalist Chic Dance Pop",
+    "value": "Clean Stylish Dance Pop, Cool Sub-bass, Sensual Plucky Synths, Breathy Female Vocalist, Sweden, Contemporary"
+  },
+  {
+    "name": "73. Hyperactive Shibuya-kei J-Pop",
+    "value": "Eclectic Upbeat Shibuya-Kei, Playful Sample-heavy Grooves, Energetic Jazzy Chords, Cute Female Vocalist, Japan, 1990s"
+  },
+  {
+    "name": "74. Dramatic Anison J-Pop Power Ballad",
+    "value": "Epic Orchestral J-Pop, Emotional Rock Band with Strings, Heroic Soaring Guitar Solos, Powerful Male Vocalist, Japan, Contemporary"
+  },
+  {
+    "name": "75. Classic Ethereal Wave Dream Pop",
+    "value": "Swirling Reverb-soaked Ethereal Wave, Heavenly Chorus-laden Guitars, Mysterious Atmospheric Synths, Angelic Female Vocalist, UK, 1990s"
+  },
+  {
+    "name": "76. Sun-Drenched Chillwave Dream Pop",
+    "value": "Lo-fi Nostalgic Chillwave, Blissful Washed-out Synths, Lazy Hazy Guitar, Soft Male Vocalist, USA, Contemporary"
+  },
+  {
+    "name": "77. Grand Royal Baroque Fanfare",
+    "value": "Ornate Majestic Baroque, Triumphant Trumpets, Solemn Timpani, Powerful Choir, France, 1700s"
+  },
+  {
+    "name": "78. Intimate Baroque Chamber Piece",
+    "value": "Clear Delicate Baroque, Reflective Viola da Gamba, Graceful Recorder, Solo Soprano Female Vocalist, Italy, 1680s"
+  },
+  {
+    "name": "79. Passionate 19th Century Symphony",
+    "value": "Lush Dynamic Romantic Classical, Sweeping Large Symphony Orchestra, Emotional Soaring Strings, Instrumental Focus, Germany, 1800s"
+  },
+  {
+    "name": "80. Nationalistic Romantic Tone Poem",
+    "value": "Evocative Colorful Romantic Classical, Heroic Orchestra with Folk Melodies, Pastoral Harp, Instrumental Focus, Czech Republic, 1800s"
+  },
+  {
+    "name": "81. Italian Grand Opera Aria",
+    "value": "Dramatic Rich Opera, Passionate Full Orchestra, Tragic Supporting Vocals, Powerful Tenor Male Vocalist, Italy, Romantic"
+  },
+  {
+    "name": "82. Baroque Opera Recitative & Aria",
+    "value": "Clear Articulate Baroque Opera, Dignified Small String Ensemble, Declamatory Harpsichord, Agile Soprano Female Vocalist, Germany, Baroque"
+  },
+  {
+    "name": "83. Minimalist Pulsating Soundscape",
+    "value": "Clear Repetitive Minimalism, Hypnotic Piano, Evolving Strings, Wordless Choir, USA, Contemporary"
+  },
+  {
+    "name": "84. Atonal Experimental String Quartet",
+    "value": "Stark Dissonant Experimental Classical, Unsettling String Quartet, Intellectual Extended techniques, Instrumental Focus, Germany, Contemporary"
+  },
+  {
+    "name": "85. Gregorian Monastic Chant",
+    "value": "Reverberant Austere Plainchant, Sacred A cappella, Serene Unison Vocals, Male Choir, France, Medieval"
+  },
+  {
+    "name": "86. Polyphonic Notre Dame Organum",
+    "value": "Resonant Layered Early Polyphony, Majestic A cappella, Devotional Polyphonic lines, Male Choir, France, Medieval"
+  },
+  {
+    "name": "87. 70s P-Funk Extravaganza",
+    "value": "Wild Psychedelic P-Funk, Groovy Slap Bass, Freaky Horn Section, Energetic Male Vocalist, USA, 1970s"
+  },
+  {
+    "name": "88. Tight Minneapolis Sound Funk",
+    "value": "Polished Synthesized Funk, Sexy LinnDrum, Danceable Synth Bass, Androgynous Male Vocalist, USA, 1980s"
+  },
+  {
+    "name": "89. 60s Motown Soul Hit",
+    "value": "Bright Catchy Motown, Uplifting Driving Bassline, Romantic Tambourine, Lead Female Vocalist, USA, 1960s"
+  },
+  {
+    "name": "90. Deep Southern Soul Ballad",
+    "value": "Raw Gritty Southern Soul, Heartbroken Organ, Passionate Horns, Gritty Male Vocalist, USA, 1970s"
+  },
+  {
+    "name": "91. 90s Smooth New Jack Swing R&B",
+    "value": "Bouncy Polished New Jack Swing, Flirtatious Programmed Drums, Upbeat Synth Bass, Smooth Female Vocalist, USA, 1990s"
+  },
+  {
+    "name": "92. Atmospheric Alternative R&B Mood",
+    "value": "Dark Ethereal Alternative R&B, Introspective Deep 808s, Sensual Lush Synths, Breathy Male Vocalist, Canada, Contemporary"
+  },
+  {
+    "name": "93. Organic 90s Neo Soul Groove",
+    "value": "Warm Jazzy Neo Soul, Conscious Fender Rhodes, Soulful Live Drums, Rich Female Vocalist, USA, 2000s"
+  },
+  {
+    "name": "94. Futuristic Electronic Neo Soul",
+    "value": "Sleek Experimental Neo Soul, Introspective Synth Bass, Cool Electronic Drums, Processed Male Vocalist, UK, Contemporary"
+  },
+  {
+    "name": "95. Glittering 70s Studio 54 Disco",
+    "value": "Lush Polished Disco, Euphoric Four-on-the-floor Drums, Danceable Octave Basslines, Powerful Female Vocalist, USA, 1970s"
+  },
+  {
+    "name": "96. Raw Underground Italo Disco Beat",
+    "value": "Synthetic Robotic Italo Disco, Melancholic Drum Machines, Spacey Analog Synths, Accented Male Vocalist, Italy, 1980s"
+  },
+  {
+    "name": "97. Roots Rockers Reggae Anthem",
+    "value": "Warm Heavy Roots Reggae, Spiritual One-drop Drum Beat, Conscious Deep Bassline, Soulful Male Vocalist, Jamaica, 1970s"
+  },
+  {
+    "name": "98. Modern Dancehall Reggae Fusion",
+    "value": "Digital Bouncy Dancehall, Energetic Programmed Drums, Party Heavy Synth Bass, Autotuned Female Vocalist, Jamaica, Contemporary"
+  },
+  {
+    "name": "99. Classic NYC Salsa Dura Fire",
+    "value": "Energetic Percussive Salsa Dura, Passionate Piano Montuno, Driving Congas, Strong Male Vocalist, Puerto Rico, 1970s"
+  },
+  {
+    "name": "100. Romantic Salsa Sensual Flow",
+    "value": "Smooth Polished Salsa Romántica, Romantic Softer Percussion, Sentimental Keyboards, Crooning Male Vocalist, Colombia, 1990s"
+  },
+  {
+    "name": "101. 70s Fela Kuti Afrobeat Groove",
+    "value": "Raw Expansive Afrobeat, Political Complex Interlocking Guitars, Hypnotic Tenor Saxophone, Charismatic Male Vocalist, Nigeria, 1970s"
+  },
+  {
+    "name": "102. Modern Afrobeat Revival Party",
+    "value": "Polished Punchy Afrobeats, Uplifting Clean Guitars, Danceable Modern Synths, Smooth Female Vocalist, Ghana, Contemporary"
+  },
+  {
+    "name": "103. Classic 70s Bollywood Filmi Masala",
+    "value": "Lush Melodramatic Bollywood, Romantic Sitar, Nostalgic Tabla, Playback Female Vocalist, India, 1970s"
+  },
+  {
+    "name": "104. Modern Bollywood Dance Pop Hit",
+    "value": "Glossy Electronic Bollywood, Energetic Synthesizers, Celebratory Programmed Beats, Autotuned Male Vocalist, India, Contemporary"
+  },
+  {
+    "name": "105. Pure Traditional Flamenco Cante Jondo",
+    "value": "Raw Intimate Flamenco, Passionate Acoustic Guitar, Tragic Hand Claps, Powerful Male Vocalist, Spain, Traditional"
+  },
+  {
+    "name": "106. Nuevo Flamenco Fusion Rumba",
+    "value": "Polished Groovy Nuevo Flamenco, Upbeat Flamenco Guitar, Sensual Cajón, Melodic Female Vocalist, Spain, Contemporary"
+  },
+  {
+    "name": "107. Sensual Angolan Kizomba Dance",
+    "value": "Smooth Rhythmic Kizomba, Romantic Synthesizers, Intimate Programmed Drums, Smooth Male Vocalist, Angola, Contemporary"
+  },
+  {
+    "name": "108. Urban Ghetto Zouk Kizomba Vibe",
+    "value": "Edgy Electronic Ghetto Zouk, Cool Heavier Synths, Streetwise Trap-influenced Drums, Autotuned Female Vocalist, France, Contemporary"
+  },
+  {
+    "name": "109. 60s British Blues Rock Power",
+    "value": "Raw Loud Blues Rock, Energetic Overdriven Electric Guitar, Rebellious Bass, Wailing Male Vocalist, UK, 1960s"
+  },
+  {
+    "name": "110. Modern Southern Blues Rock Grit",
+    "value": "Gritty Swampy Blues Rock, Soulful Slide Guitar, Raw Hammond Organ, Gravelly Female Vocalist, USA, Contemporary"
+  },
+  {
+    "name": "111. Classic Honky Tonk Heartbreak",
+    "value": "Twangy Simple Honky Tonk, Sad Pedal Steel Guitar, Yearning Fiddle, Nasal Male Vocalist, USA, 1950s"
+  },
+  {
+    "name": "112. Modern Pop Country Anthem",
+    "value": "Polished Arena-Ready Pop Country, Uplifting Electric Guitars, Celebratory Programmed Drums, Strong Female Vocalist, USA, Contemporary"
+  },
+  {
+    "name": "113. Raw 1930s Delta Blues Slide",
+    "value": "Primitive Acoustic Delta Blues, Soulful Acoustic Guitar, Pained Foot Stomps, Gritty Male Vocalist, USA, 1930s"
+  },
+  {
+    "name": "114. Electric Delta Blues Revival Howl",
+    "value": "Gritty Amplified Delta Blues, Intense Electric Guitar, Powerful Harmonica, Raw Male Vocalist, USA, Contemporary"
+  },
+  {
+    "name": "115. 70s Rebel Outlaw Country Story",
+    "value": "Raw Unpolished Outlaw Country, Defiant Acoustic Guitar, Storytelling Pedal Steel, Gruff Male Vocalist, USA, 1970s"
+  },
+  {
+    "name": "116. Modern Dark Outlaw Ballad",
+    "value": "Atmospheric Sparse Outlaw Country, Brooding Baritone Guitar, Cinematic Minimal Percussion, Deep Female Vocalist, USA, Contemporary"
+  },
+  {
+    "name": "117. Rootsy Americana String Band Jam",
+    "value": "Organic Warm Americana, Nostalgic Acoustic Guitar, Heartfelt Mandolin, Harmonizing Male Vocalist, USA, Contemporary"
+  },
+  {
+    "name": "118. Alt-Country Rock Americana Drive",
+    "value": "Gritty Energetic Alt-Country, Angsty Telecaster Electric Guitar, Yearning Hammond Organ, Earnest Female Vocalist, USA, Contemporary"
+  },
+  {
+    "name": "119. High-Energy 90s Ska Punk Party",
+    "value": "Bright Punchy Ska Punk, Fun Skanking Guitars, Energetic Horn Section, Energetic Male Vocalist, USA, 1990s"
+  },
+  {
+    "name": "120. Gritty Two-Tone Ska Punk Revival",
+    "value": "Raw Political Ska Punk, Urgent Clean Upstroke Guitars, Rebellious Prominent Organ, Shouted Female Vocalist, UK, Contemporary"
+  }
+]

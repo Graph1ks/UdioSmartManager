@@ -1,0 +1,14 @@
+{
+  "name": "udio-smart-manager",
+  "version": "1.0.0",
+  "description": "Build scripts for the Udio Smart Manager Chrome Extension",
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch --mode development",
+    "build": "vite build --mode production"
+  },
+  "devDependencies": {
+    "vite": "^5.3.5",
+    "vite-plugin-web-extension": "^4.4.4"
+  }
+}

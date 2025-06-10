@@ -1,0 +1,482 @@
+[
+  {
+    "name": "1. [N] 70s Stadium Anthem",
+    "value": "Lo-fi, Minimalist, Depressed, Apathetic, Accordion, Recorder"
+  },
+  {
+    "name": "2. [N] Gritty Blues Rock Revival",
+    "value": "Polished, Clean, Cheerful, Serene, Synthesizer, Harp"
+  },
+  {
+    "name": "3. [N] High-Energy 77 Punk",
+    "value": "Lush, Polished, Calm, Peaceful, Piano, Cello"
+  },
+  {
+    "name": "4. [N] Melodic Skate Punk",
+    "value": "Sludgy, Atonal, Gloomy, Depressed, Bagpipes, Tuba"
+  },
+  {
+    "name": "5. [N] Seattle Sound Despair",
+    "value": "Bright, Clean, Happy, Joyful, Synthesizer, Ukulele"
+  },
+  {
+    "name": "6. [N] Acoustic Grunge Lament",
+    "value": "Polished, Epic, Energetic, Cheerful, Synthesizer, Flute"
+  },
+  {
+    "name": "7. [N] 60s Acid Trip Rock",
+    "value": "Minimalist, Dry, Sober, Rigid, Accordion, Clarinet"
+  },
+  {
+    "name": "8. [N] Modern Neo-Psych Haze",
+    "value": "Aggressive, Sharp, Extroverted, Agitated, Trumpet, Banjo"
+  },
+  {
+    "name": "9. [N] Jangly 80s College Rock",
+    "value": "Sludgy, Dark, Gloomy, Depressed, Baritone Saxophone, Timpani"
+  },
+  {
+    "name": "10. [N] Brooding Post-Punk Revival",
+    "value": "Happy, Bright, Cheerful, Carefree, Flute, Ukulele"
+  },
+  {
+    "name": "11. [N] Epic Cinematic Crescendo",
+    "value": "Minimalist, Staccato, Grounded, Content, Ukulele, Kazoo"
+  },
+  {
+    "name": "12. [N] Minimalist Ambient Textures",
+    "value": "Maximalist, Loud, Extroverted, Aggressive, Trumpet, Congas"
+  },
+  {
+    "name": "13. [N] Driving Berlin Warehouse Techno",
+    "value": "Organic, Lush, Gentle, Peaceful, Acoustic Guitar, Flute"
+  },
+  {
+    "name": "14. [N] Melodic Ethereal Techno Journey",
+    "value": "Harsh, Raw, Aggressive, Anxious, Banjo, Industrial Percussion"
+  },
+  {
+    "name": "15. [N] Classic Chicago Jackin House",
+    "value": "Polished, Ethereal, Somber, Melancholic, String Section, Harp"
+  },
+  {
+    "name": "16. [N] Deep Progressive House Waves",
+    "value": "Abrasive, Raw, Aggressive, Agitated, Saxophone, Tabla"
+  },
+  {
+    "name": "17. [N] Vast Glacial Soundscape",
+    "value": "Warm, Intimate, Joyful, Energetic, Acoustic Guitar, Upright Piano"
+  },
+  {
+    "name": "18. [N] Warm Sunrise Meditation Ambient",
+    "value": "Cold, Harsh, Anxious, Aggressive, Didgeridoo, Taiko Drum"
+  },
+  {
+    "name": "19. [N] 80s Neon Drive Outrun",
+    "value": "Organic, Muted, Somber, Depressed, Acoustic Guitar, Cello"
+  },
+  {
+    "name": "20. [N] Dark Dystopian Darksynth",
+    "value": "Clean, Bright, Joyful, Peaceful, Acoustic Piano, Flute"
+  },
+  {
+    "name": "21. [N] High-Energy Neurofunk DnB",
+    "value": "Organic, Smooth, Calm, Relaxed, Acoustic Guitar, String Pad"
+  },
+  {
+    "name": "22. [N] Liquid Soulful DnB Cruise",
+    "value": "Harsh, Abrasive, Aggressive, Anxious, Tuba, Industrial Noise"
+  },
+  {
+    "name": "23. [N] Uplifting Euphoric Trance Anthem",
+    "value": "Minimalist, Lo-fi, Depressing, Grounded, Acoustic Guitar, Bassoon"
+  },
+  {
+    "name": "24. [N] Dark Psychedelic Goa Trance",
+    "value": "Clean, Bright, Simple, Cheerful, Acoustic Piano, Ukulele"
+  },
+  {
+    "name": "25. [N] 80s NWOBHM Glory",
+    "value": "Polished, Clean, Calm, Serene, Synthesizer, Flute"
+  },
+  {
+    "name": "26. [N] Modern Groove Metal Stomp",
+    "value": "Soft, Ethereal, Peaceful, Melancholic, Harp, Recorder"
+  },
+  {
+    "name": "27. [N] Raw Scandinavian Forest Black Metal",
+    "value": "Polished, Warm, Joyful, Loving, Synthesizer, Piano"
+  },
+  {
+    "name": "28. [N] Atmospheric Cascadian Black Metal",
+    "value": "Dry, Staccato, Angry, Urban, Trumpet, Accordion"
+  },
+  {
+    "name": "29. [N] Classic Sabbathian Doom Riffage",
+    "value": "Light, Clean, Happy, Energetic, Synthesizer, Flute"
+  },
+  {
+    "name": "30. [N] Funeral Doom Desolation",
+    "value": "Upbeat, Bouncy, Joyful, Celebratory, Ukulele, Trumpet"
+  },
+  {
+    "name": "31. [N] Epic Technical Prog Metal Odyssey",
+    "value": "Lo-fi, Simple, Grounded, Lazy, Ukulele, Kazoo"
+  },
+  {
+    "name": "32. [N] Atmospheric Djentle Prog",
+    "value": "Raw, Muddy, Aggressive, Chaotic, Fiddle, French Horn"
+  },
+  {
+    "name": "33. [N] 2000s Melodic Metalcore Breakdown",
+    "value": "Soft, Ethereal, Calm, Peaceful, Acoustic Piano, String Section"
+  },
+  {
+    "name": "34. [N] Modern Dissonant Deathcore",
+    "value": "Clean, Melodic, Joyful, Peaceful, Xylophone, Ukulele"
+  },
+  {
+    "name": "35. [N] Viking Battle Folk Metal Hymn",
+    "value": "Minimalist, Polished, Peaceful, Serene, Synthesizer, Glockenspiel"
+  },
+  {
+    "name": "36. [N] Celtic Forest Folk Metal Dance",
+    "value": "Dark, Atonal, Depressing, Aggressive, Synthesizer, Tuba"
+  },
+  {
+    "name": "37. [N] Fast Paced 40s Bebop Session",
+    "value": "Modern, Polished, Slow, Simple, Synthesizer, Bagpipes"
+  },
+  {
+    "name": "38. [N] Cool & Intricate Bebop Night",
+    "value": "Loud, Raw, Aggressive, Energetic, Accordion, Timpani"
+  },
+  {
+    "name": "39. [N] 70s Electric Jazz Fusion Power",
+    "value": "Traditional, Acoustic, Simple, Predictable, Harp, Recorder"
+  },
+  {
+    "name": "40. [N] Modern Atmospheric Jazz Fusion",
+    "value": "Raw, Aggressive, Energetic, Simple, Tuba, Steel Drum"
+  },
+  {
+    "name": "41. [N] 80s Sunset Smooth Jazz Groove",
+    "value": "Raw, Harsh, Aggressive, Anxious, French Horn, Timpani"
+  },
+  {
+    "name": "42. [N] Contemporary Urban Smooth Jazz Chill",
+    "value": "Abrasive, Loud, Energetic, Chaotic, Tuba, Distorted Synthesizer"
+  },
+  {
+    "name": "43. [N] Roaring 30s Swing Big Band",
+    "value": "Modern, Lo-fi, Somber, Meditative, Synthesizer, Drum Machine"
+  },
+  {
+    "name": "44. [N] Modern Cinematic Big Band Score",
+    "value": "Lo-fi, Raw, Intimate, Playful, Ukulele, Kazoo"
+  },
+  {
+    "name": "45. [N] Film Noir Smoky Bar Dark Jazz",
+    "value": "Bright, Clean, Joyful, Energetic, Accordion, Ukulele"
+  },
+  {
+    "name": "46. [N] Industrial Dystopian Dark Jazz",
+    "value": "Smooth, Clean, Peaceful, Happy, Acoustic Piano, Flute"
+  },
+  {
+    "name": "47. [N] Intimate Singer-Songwriter Confession",
+    "value": "Loud, Synthetic, Aggressive, Angry, Synthesizer, Drum Machine"
+  },
+  {
+    "name": "48. [N] Indie Folk Ensemble Gathering",
+    "value": "Minimalist, Electronic, Somber, Isolated, Synthesizer, Bass Synthesizer"
+  },
+  {
+    "name": "49. [N] 60s Protest Folk Rock Anthem",
+    "value": "Dark, Polished, Apathetic, Depressed, Synthesizer, Drum Machine"
+  },
+  {
+    "name": "50. [N] Dark Electric Folk Rock Ballad",
+    "value": "Bright, Clean, Joyful, Carefree, Acoustic Ukulele, Glockenspiel"
+  },
+  {
+    "name": "51. [N] Lively Irish Pub Session",
+    "value": "Polished, Slow, Somber, Melancholic, Synthesizer, Cello"
+  },
+  {
+    "name": "52. [N] Ethereal Scottish Highland Ballad",
+    "value": "Aggressive, Raw, Energetic, Angry, Synthesizer, Taiko Drum"
+  },
+  {
+    "name": "53. [N] Fast Pickin Appalachian Bluegrass",
+    "value": "Electric, Dark, Slow, Somber, Synthesizer, Electric Bass Guitar"
+  },
+  {
+    "name": "54. [N] Progressive Newgrass Exploration",
+    "value": "Raw, Simple, Extroverted, Basic, Kazoo, Washboard"
+  },
+  {
+    "name": "55. [N] Neofolk Ritual Chant",
+    "value": "Lush, Cheerful, Joyful, Hopeful, Synthesizer, Ukulele"
+  },
+  {
+    "name": "56. [N] American Gothic Folk Noir",
+    "value": "Polished, Bright, Optimistic, Celebratory, Electric Piano, Synthesizer"
+  },
+  {
+    "name": "57. [N] 90s Golden Age Boom Bap",
+    "value": "Clean, Polished, Uncertain, Ethereal, Synthesizer Pad, String Section"
+  },
+  {
+    "name": "58. [N] Modern Chill Boom Bap Vibe",
+    "value": "Aggressive, Hi-fi, Agitated, Extroverted, Trumpet, Taiko Drum"
+  },
+  {
+    "name": "59. [N] Aggressive Dark Trap Banger",
+    "value": "Soft, Clean, Peaceful, Calm, Acoustic Guitar, Flute"
+  },
+  {
+    "name": "60. [N] Ethereal Cloud Rap / Emo Trap",
+    "value": "Bright, Sharp, Aggressive, Awake, French Horn, Djembe"
+  },
+  {
+    "name": "61. [N] Rainy Day Lo-Fi Study Beats",
+    "value": "Clean, Polished, Energetic, Aggressive, Synthesizer Lead, Timpani"
+  },
+  {
+    "name": "62. [N] Lo-Fi Hip Hop with Introspective Bars",
+    "value": "Loud, Hi-fi, Extroverted, Agitated, Distorted Synthesizer, Congas"
+  },
+  {
+    "name": "63. [N] 90s Native Tongues Jazz Rap",
+    "value": "Aggressive, Raw, Negative, Reckless, Distorted Synthesizer, Tuba"
+  },
+  {
+    "name": "64. [N] Modern Abstract Jazz Rap Experiment",
+    "value": "Commercial, Smooth, Extroverted, Clear, Upright Piano, Simple Accordion"
+  },
+  {
+    "name": "65. [N] Classic 90s Horrorcore Nightmare",
+    "value": "Bright, Clean, Peaceful, Loving, Acoustic Guitar, Ukulele"
+  },
+  {
+    "name": "66. [N] Cinematic Modern Horrorcore Tale",
+    "value": "Lighthearted, Comedic, Cheerful, Playful, Accordion, Kazoo"
+  },
+  {
+    "name": "67. [N] Bright 80s New Wave Synth-Pop",
+    "value": "Gritty, Lo-fi, Pessimistic, Somber, Acoustic Guitar, Bodhrán"
+  },
+  {
+    "name": "68. [N] Dark Moody Contemporary Synth-Pop",
+    "value": "Uplifting, Bright, Cheerful, Carefree, Acoustic Ukulele, Glockenspiel"
+  },
+  {
+    "name": "69. [N] Twee C86 Indie Pop Charm",
+    "value": "Polished, Heavy, Sophisticated, Aggressive, Synthesizer Lead, Tuba"
+  },
+  {
+    "name": "70. [N] Sophisticated Chamber Pop Elegance",
+    "value": "Raw, Minimalist, Aggressive, Angry, Banjo, Frame Drum"
+  },
+  {
+    "name": "71. [N] 90s Eurodance Pop Anthem",
+    "value": "Slow, Minimalist, Melancholic, Somber, Acoustic Guitar, Cello"
+  },
+  {
+    "name": "72. [N] Modern Minimalist Chic Dance Pop",
+    "value": "Loud, Maximalist, Aggressive, Chaotic, Fiddle, Bassoon"
+  },
+  {
+    "name": "73. [N] Hyperactive Shibuya-kei J-Pop",
+    "value": "Minimalist, Slow, Serious, Depressing, Pipe Organ, Bassoon"
+  },
+  {
+    "name": "74. [N] Dramatic Anison J-Pop Power Ballad",
+    "value": "Understated, Lo-fi, Apathetic, Calm, Ukulele, Recorder"
+  },
+  {
+    "name": "75. [N] Classic Ethereal Wave Dream Pop",
+    "value": "Dry, Staccato, Aggressive, Clear, Trumpet, Tuba"
+  },
+  {
+    "name": "76. [N] Sun-Drenched Chillwave Dream Pop",
+    "value": "Hi-fi, Sharp, Anxious, Energetic, Timpani, Snare Drum"
+  },
+  {
+    "name": "77. [N] Grand Royal Baroque Fanfare",
+    "value": "Minimalist, Lo-fi, Humble, Playful, Ukulele, Synthesizer"
+  },
+  {
+    "name": "78. [N] Intimate Baroque Chamber Piece",
+    "value": "Loud, Maximalist, Aggressive, Energetic, Synthesizer, Drum Kit"
+  },
+  {
+    "name": "79. [N] Passionate 19th Century Symphony",
+    "value": "Minimalist, Static, Contained, Apathetic, Ukulele, Synthesizer"
+  },
+  {
+    "name": "80. [N] Nationalistic Romantic Tone Poem",
+    "value": "Abstract, Monochromatic, Anti-heroic, Urban, Synthesizer, Drum Machine"
+  },
+  {
+    "name": "81. [N] Italian Grand Opera Aria",
+    "value": "Understated, Sparse, Calm, Comedic, Acoustic Guitar, Ukulele"
+  },
+  {
+    "name": "82. [N] Baroque Opera Recitative & Aria",
+    "value": "Muddy, Slurred, Undignified, Casual, Synthesizer, Electric Bass Guitar"
+  },
+  {
+    "name": "83. [N] Minimalist Pulsating Soundscape",
+    "value": "Lush, Varied, Distracting, Static, French Horn, Congas"
+  },
+  {
+    "name": "84. [N] Atonal Experimental String Quartet",
+    "value": "Melodic, Consonant, Comforting, Simple, Accordion, Upright Piano"
+  },
+  {
+    "name": "85. [N] Gregorian Monastic Chant",
+    "value": "Dry, Ornate, Profane, Agitated, Synthesizer, Drum Kit"
+  },
+  {
+    "name": "86. [N] Polyphonic Notre Dame Organum",
+    "value": "Dry, Simple, Humble, Casual, Banjo, Snare Drum"
+  },
+  {
+    "name": "87. [N] 70s P-Funk Extravaganza",
+    "value": "Tame, Clean, Rigid, Sober, Acoustic Guitar, String Section"
+  },
+  {
+    "name": "88. [N] Tight Minneapolis Sound Funk",
+    "value": "Raw, Organic, Clumsy, Unflattering, Acoustic Drums, Fiddle"
+  },
+  {
+    "name": "89. [N] 60s Motown Soul Hit",
+    "value": "Dark, Dissonant, Depressing, Angry, Fuzz Bass, Tuba"
+  },
+  {
+    "name": "90. [N] Deep Southern Soul Ballad",
+    "value": "Polished, Clean, Cheerful, Detached, Synthesizer, Glockenspiel"
+  },
+  {
+    "name": "91. [N] 90s Smooth New Jack Swing R&B",
+    "value": "Sludgy, Raw, Serious, Somber, Acoustic Guitar, Frame Drum"
+  },
+  {
+    "name": "92. [N] Atmospheric Alternative R&B Mood",
+    "value": "Bright, Sharp, Extroverted, Cheerful, Acoustic Guitar, Snare Drum"
+  },
+  {
+    "name": "93. [N] Organic 90s Neo Soul Groove",
+    "value": "Cold, Electronic, Aggressive, Superficial, Distorted Synthesizer, Timpani"
+  },
+  {
+    "name": "94. [N] Futuristic Electronic Neo Soul",
+    "value": "Raw, Traditional, Extroverted, Warm, Acoustic Piano, Upright Bass"
+  },
+  {
+    "name": "95. [N] Glittering 70s Studio 54 Disco",
+    "value": "Minimalist, Raw, Depressing, Somber, Acoustic Guitar, Berimbau"
+  },
+  {
+    "name": "96. [N] Raw Underground Italo Disco Beat",
+    "value": "Organic, Lush, Joyful, Earthy, Acoustic Guitar, Live String Section"
+  },
+  {
+    "name": "97. [N] Roots Rockers Reggae Anthem",
+    "value": "Cold, Light, Aggressive, Superficial, French Horn, Synthesizer Lead"
+  },
+  {
+    "name": "98. [N] Modern Dancehall Reggae Fusion",
+    "value": "Organic, Slow, Melancholic, Intimate, Acoustic Guitar, Cello"
+  },
+  {
+    "name": "99. [N] Classic NYC Salsa Dura Fire",
+    "value": "Slow, Melodic, Calm, Reflective, Synthesizer Pad, Koto"
+  },
+  {
+    "name": "100. [N] Romantic Salsa Sensual Flow",
+    "value": "Aggressive, Raw, Loud, Angry, Heavy Brass, Tuba"
+  },
+  {
+    "name": "101. [N] 70s Fela Kuti Afrobeat Groove",
+    "value": "Polished, Concise, Apolitical, Simple, Synthesizer Lead, String Section"
+  },
+  {
+    "name": "102. [N] Modern Afrobeat Revival Party",
+    "value": "Raw, Lo-fi, Somber, Meditative, Sitar, Djembe"
+  },
+  {
+    "name": "103. [N] Classic 70s Bollywood Filmi Masala",
+    "value": "Minimalist, Understated, Apathetic, Modern, Synthesizer, Hurdy-Gurdy"
+  },
+  {
+    "name": "104. [N] Modern Bollywood Dance Pop Hit",
+    "value": "Organic, Acoustic, Slow, Melancholic, Sitar, Accordion"
+  },
+  {
+    "name": "105. [N] Pure Traditional Flamenco Cante Jondo",
+    "value": "Polished, Electronic, Cheerful, Detached, Synthesizer, Drum Machine"
+  },
+  {
+    "name": "106. [N] Nuevo Flamenco Fusion Rumba",
+    "value": "Raw, Austere, Somber, Tragic, Sitar, Timpani"
+  },
+  {
+    "name": "107. [N] Sensual Angolan Kizomba Dance",
+    "value": "Aggressive, Harsh, Angry, Energetic, Distorted Guitar, Tuba"
+  },
+  {
+    "name": "108. [N] Urban Ghetto Zouk Kizomba Vibe",
+    "value": "Organic, Soft, Romantic, Traditional, Acoustic Guitar, Cavaquinho"
+  },
+  {
+    "name": "109. [N] 60s British Blues Rock Power",
+    "value": "Polished, Clean, Calm, Serene, Synthesizer, String Section"
+  },
+  {
+    "name": "110. [N] Modern Southern Blues Rock Grit",
+    "value": "Clean, Polished, Cheerful, Detached, Synthesizer, Glockenspiel"
+  },
+  {
+    "name": "111. [N] Classic Honky Tonk Heartbreak",
+    "value": "Polished, Modern, Happy, Energetic, Synthesizer, Drum Machine"
+  },
+  {
+    "name": "112. [N] Modern Pop Country Anthem",
+    "value": "Raw, Lo-fi, Somber, Intimate, Banjo, Upright Bass"
+  },
+  {
+    "name": "113. [N] Raw 1930s Delta Blues Slide",
+    "value": "Polished, Electric, Cheerful, Detached, Synthesizer, Drum Kit"
+  },
+  {
+    "name": "114. [N] Electric Delta Blues Revival Howl",
+    "value": "Clean, Acoustic, Calm, Mellow, Piano, String Section"
+  },
+  {
+    "name": "115. [N] 70s Rebel Outlaw Country Story",
+    "value": "Polished, Modern, Compliant, Cheerful, Synthesizer, Drum Machine"
+  },
+  {
+    "name": "116. [N] Modern Dark Outlaw Ballad",
+    "value": "Bright, Lush, Cheerful, Upbeat, Ukulele, Accordion"
+  },
+  {
+    "name": "117. [N] Rootsy Americana String Band Jam",
+    "value": "Synthetic, Cold, Aggressive, Angry, Synthesizer, Tuba"
+  },
+  {
+    "name": "118. [N] Alt-Country Rock Americana Drive",
+    "value": "Clean, Polished, Calm, Content, Acoustic Piano, Flute"
+  },
+  {
+    "name": "119. [N] High-Energy 90s Ska Punk Party",
+    "value": "Dark, Slow, Somber, Depressing, Cello, Bassoon"
+  },
+  {
+    "name": "120. [N] Gritty Two-Tone Ska Punk Revival",
+    "value": "Polished, Apolitical, Cheerful, Complacent, Synthesizer Pad, Electric Piano"
+  }
+]
