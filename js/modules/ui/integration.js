@@ -14,15 +14,13 @@ const logger = new Logger("UdioIntegration");
 export const UdioIntegration = {
   promptManager: null,
   styleReductionManager: null,
-  lyricVaultManager: null, // Add new manager property
+  lyricVaultManager: null,
   isDataLoaded: false,
   promptGenData: null,
   isIntegratedUISetup: false,
   observerInstance: null,
-  _checkForUITimeout: null,
   _searchDebouncers: {},
-  periodicCheckInterval: null,
-  lyricsEditorListenerAttached: false, // Prevent multiple listeners
+  lyricsEditorListenerAttached: false,
 
   ui: {
     mainCollapsibleSection: null,
@@ -32,43 +30,37 @@ export const UdioIntegration = {
     styleReductionPresetListContainer: null,
     styleReductionSubSection: null,
     styleReductionManageButton: null,
-    styleReductionHelperText: null,
     advancedPromptGeneratorUI: null,
     lyricVaultTrigger: null,
     isAccordionOpen: false,
-    subsectionStates: {
-      prompt: true,
-      styleReduction: true,
-    },
+    subsectionStates: { prompt: true, styleReduction: true },
     promptIntegratedCurrentPage: 1,
     styleReductionIntegratedCurrentPage: 1,
     promptSearchTerm: "",
     styleReductionSearchTerm: "",
   },
 
-  observerOptions: {
-    childList: true,
-    subtree: true,
-    attributes: true,
-    attributeFilter: ["style", "class", "id", "data-state", "hidden"],
-  },
-
+  observerOptions: { childList: true, subtree: true },
   UI_INJECTION_PARENT_SELECTOR: "div.joyride-create",
   UI_INJECTION_REFERENCE_NODE_SELECTOR:
     "div.mt-2.flex.w-full.flex-row.items-center.justify-between.gap-2",
   LYRIC_BUTTON_CONTAINER_SELECTOR:
     "form.mb-4.flex.grow.items-center.justify-end.gap-3.flex-row",
 
+  debouncedAttemptUIInjection: debounce(function () {
+    this.attemptFullUIInjection();
+  }, 250),
+
   async init(
     promptMgr,
     styleReductionMgr,
-    lyricVaultMgr, // Accept new manager
+    lyricVaultMgr,
     promptGenData,
     isDataLoaded
   ) {
     this.promptManager = promptMgr;
     this.styleReductionManager = styleReductionMgr;
-    this.lyricVaultManager = lyricVaultMgr; // Store new manager
+    this.lyricVaultManager = lyricVaultMgr;
     this.promptGenData = promptGenData;
     this.isDataLoaded = isDataLoaded;
 
@@ -85,9 +77,8 @@ export const UdioIntegration = {
         "upmSubsectionStates_v1",
       ]);
       this.ui.isAccordionOpen = storedState.upmAccordionOpenState_v1 ?? false;
-      if (storedState.upmSubsectionStates_v1) {
+      if (storedState.upmSubsectionStates_v1)
         this.ui.subsectionStates = storedState.upmSubsectionStates_v1;
-      }
       this.ui.promptIntegratedCurrentPage =
         parseInt(storedState.upmPromptIntegratedPage_v1, 10) || 1;
       this.ui.styleReductionIntegratedCurrentPage =
@@ -96,69 +87,19 @@ export const UdioIntegration = {
       logger.error("Failed to load UI state from storage:", e);
     }
 
-    this.ui.promptSearchTerm = "";
-    this.ui.styleReductionSearchTerm = "";
     this.observerInstance = new MutationObserver(
       this.handleMutations.bind(this)
     );
     this.connectObserver();
-    this.startPeriodicChecks();
-    logger.log("UdioIntegration initialized.");
+
+    // Check once on init, in case we load directly onto the create page.
+    this.attemptFullUIInjection();
+    logger.log("UdioIntegration initialized. Observing for UI changes.");
   },
 
-  startPeriodicChecks() {
-    if (this.periodicCheckInterval) {
-      clearInterval(this.periodicCheckInterval);
-    }
-    this.periodicCheckInterval = setInterval(() => {
-      this.checkForUIDisplay(); // Periodically check for all UI elements
-    }, 1500);
-  },
-
-  handleMutations(mutations) {
-    let triggerUICheck = false;
-    for (const mutation of mutations) {
-      if (mutation.type === "childList") {
-        for (const node of Array.from(mutation.addedNodes).concat(
-          Array.from(mutation.removedNodes)
-        )) {
-          if (node.nodeType === Node.ELEMENT_NODE) {
-            if (
-              (node.matches &&
-                (node.matches(this.UI_INJECTION_PARENT_SELECTOR) ||
-                  node.querySelector(this.UI_INJECTION_PARENT_SELECTOR) ||
-                  node.matches(this.LYRIC_BUTTON_CONTAINER_SELECTOR) ||
-                  node.querySelector(this.LYRIC_BUTTON_CONTAINER_SELECTOR))) ||
-              (node.matches &&
-                (node.matches(this.UI_INJECTION_REFERENCE_NODE_SELECTOR) ||
-                  node.querySelector(
-                    this.UI_INJECTION_REFERENCE_NODE_SELECTOR
-                  )))
-            ) {
-              triggerUICheck = true;
-              break;
-            }
-          }
-        }
-        if (triggerUICheck) break;
-      } else if (mutation.type === "attributes") {
-        const advControlsContent = mutation.target.closest(
-          'div[role="region"][id^="radix-"]'
-        );
-        if (
-          advControlsContent &&
-          advControlsContent.querySelector(
-            'input[cmdk-input][placeholder*="avoid"]'
-          )
-        ) {
-          triggerUICheck = true;
-        }
-      }
-    }
-    if (triggerUICheck) {
-      clearTimeout(this._checkForUITimeout);
-      this._checkForUITimeout = setTimeout(() => this.checkForUIDisplay(), 450);
-    }
+  handleMutations() {
+    // Any DOM change triggers a debounced check. This is efficient and robust.
+    this.debouncedAttemptUIInjection();
   },
 
   disconnectObserver() {
@@ -169,39 +110,32 @@ export const UdioIntegration = {
       this.observerInstance.observe(document.body, this.observerOptions);
   },
 
-  async checkForUIDisplay() {
-    this.disconnectObserver();
-
-    // Check for Preset Manager UI
+  attemptFullUIInjection() {
     const injectionParent = document.querySelector(
       this.UI_INJECTION_PARENT_SELECTOR
     );
-    if (injectionParent) {
+
+    if (injectionParent && !this.isIntegratedUISetup) {
       const referenceNode = injectionParent.querySelector(
         this.UI_INJECTION_REFERENCE_NODE_SELECTOR
       );
       if (referenceNode) {
-        const existingSection = document.getElementById(
-          `${UPM_UI_PREFIX}-main-collapsible-section`
-        );
-        if (!existingSection || !injectionParent.contains(existingSection)) {
-          if (existingSection) existingSection.remove();
-          await this.injectMainCollapsibleSection(
-            injectionParent,
-            referenceNode
-          );
-        } else {
-          this.refreshIntegratedUI();
-        }
+        logger.log("Create page UI detected. Injecting Smart Manager.");
+        this.injectMainCollapsibleSection(injectionParent, referenceNode);
       }
-    } else {
+    } else if (!injectionParent && this.isIntegratedUISetup) {
+      // The user has navigated away from the create page, so we clean up and reset.
+      logger.log("Create page UI has been removed. Resetting state.");
+      if (this.ui.mainCollapsibleSection) {
+        this.ui.mainCollapsibleSection.remove();
+        this.ui.mainCollapsibleSection = null;
+      }
       this.isIntegratedUISetup = false;
     }
 
+    // These are checked every time as their containers can appear/disappear on any page.
     this.injectLyricVaultTriggerButton();
-    this.setupLyricsEditorListener(); // NEW: Attach dblclick listener
-
-    this.connectObserver();
+    this.setupLyricsEditorListener();
   },
 
   setupLyricsEditorListener() {
@@ -209,7 +143,6 @@ export const UdioIntegration = {
     if (lyricsEditor && !this.lyricsEditorListenerAttached) {
       lyricsEditor.addEventListener("dblclick", (e) => {
         if (e.ctrlKey || e.metaKey) {
-          // Check for Ctrl (Win/Linux) or Command (Mac)
           logger.log("Lyrics editor CTRL+Double-Clicked.");
           this.lyricVaultManager.toggleManagerAndSelectLast();
         }
@@ -230,7 +163,7 @@ export const UdioIntegration = {
         this.ui.lyricVaultTrigger.remove();
         this.ui.lyricVaultTrigger = null;
       }
-      return; // Not in custom lyrics mode
+      return;
     }
 
     const buttonContainer = document.querySelector(
@@ -241,7 +174,7 @@ export const UdioIntegration = {
     const existingButton = buttonContainer.querySelector(
       `#${UPM_UI_PREFIX}-lyric-vault-trigger`
     );
-    if (existingButton) return; // Already injected
+    if (existingButton) return;
 
     const writeForMeButton = buttonContainer.querySelector(
       'button[title="Generate"]'
@@ -250,8 +183,8 @@ export const UdioIntegration = {
 
     this.ui.lyricVaultTrigger = document.createElement("button");
     this.ui.lyricVaultTrigger.id = `${UPM_UI_PREFIX}-lyric-vault-trigger`;
-    this.ui.lyricVaultTrigger.className = writeForMeButton.className; // Copy classes
-    this.ui.lyricVaultTrigger.type = "button"; // prevent form submission
+    this.ui.lyricVaultTrigger.className = writeForMeButton.className;
+    this.ui.lyricVaultTrigger.type = "button";
     this.ui.lyricVaultTrigger.innerHTML = `${
       createIcon(ICONS.lyrics).outerHTML
     } LyricVault`;
@@ -260,7 +193,6 @@ export const UdioIntegration = {
       this.lyricVaultManager.toggleManagerWindow();
     };
 
-    // Insert before the "Write for me" button's parent div
     writeForMeButton.parentElement.insertAdjacentElement(
       "beforebegin",
       this.ui.lyricVaultTrigger
@@ -583,7 +515,7 @@ export const UdioIntegration = {
         button.onclick = async (e) => {
           e.stopPropagation();
           button.classList.add(`${UPM_UI_PREFIX}-applying`);
-          this.handleApplyPreset(type, preset.value); // No 'await' needed now
+          this.handleApplyPreset(type, preset.value);
           setTimeout(
             () => button.classList.remove(`${UPM_UI_PREFIX}-applying`),
             500

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Udio Smart Manager",
-  "version": "1.0",
+  "version": "1.0.1",
   "description": "Browser extension to better manage your prompts, style reduction, lyrics etc.",
   "permissions": ["storage"],
   "icons": {
@@ -11,7 +11,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["*://*.udio.com/create*"],
+      "matches": ["*://*.udio.com/*"],
       "js": ["js/content_script.js"],
       "run_at": "document_idle"
     }
