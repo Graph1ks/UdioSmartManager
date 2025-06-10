@@ -93,13 +93,21 @@ export const MANAGER_CONFIGS = {
     uiSizeStorageKey: `udioLyricVault_${USPM_UI_PREFIX}_uiSize_v1`, // New
     exportFileName: "udio_lyrics.json",
     targetInputSelector: () => {
-      // Find the TipTap editor for custom lyrics, but only when it's active.
+      // **MODIFIED**: This selector is now much more robust.
+      // 1. Find the "Custom" lyrics radio button that is currently selected.
       const customLyricsRadio = document.querySelector(
         'button[role="radio"][value="user"][data-state="checked"]'
       );
-      if (!customLyricsRadio) return null; // Not in custom mode
+      if (!customLyricsRadio) return null; // Not in "Custom" mode.
 
-      return document.querySelector(
+      // 2. Ensure the accordion panel containing it is actually open.
+      const accordionPanel = customLyricsRadio.closest(
+        'div[data-orientation="vertical"][data-state="open"]'
+      );
+      if (!accordionPanel) return null; // Accordion is closed.
+
+      // 3. If both conditions are met, find the active editor inside.
+      return accordionPanel.querySelector(
         '.tiptap.ProseMirror[contenteditable="true"]'
       );
     },

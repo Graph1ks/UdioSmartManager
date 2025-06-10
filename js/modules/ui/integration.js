@@ -40,7 +40,7 @@ export const UdioIntegration = {
     styleReductionSearchTerm: "",
   },
 
-  observerOptions: { childList: true, subtree: true },
+  observerOptions: { childList: true, subtree: true, attributes: true },
   UI_INJECTION_PARENT_SELECTOR: "div.joyride-create",
   UI_INJECTION_REFERENCE_NODE_SELECTOR:
     "div.mt-2.flex.w-full.flex-row.items-center.justify-between.gap-2",
@@ -92,13 +92,13 @@ export const UdioIntegration = {
     );
     this.connectObserver();
 
-    // Check once on init, in case we load directly onto the create page.
     this.attemptFullUIInjection();
     logger.log("UdioIntegration initialized. Observing for UI changes.");
   },
 
   handleMutations() {
-    // Any DOM change triggers a debounced check. This is efficient and robust.
+    // **MODIFIED**: This is the core fix. We only check for UI injection/destruction.
+    // The constant refreshing, which caused the loop, is removed.
     this.debouncedAttemptUIInjection();
   },
 
@@ -124,7 +124,6 @@ export const UdioIntegration = {
         this.injectMainCollapsibleSection(injectionParent, referenceNode);
       }
     } else if (!injectionParent && this.isIntegratedUISetup) {
-      // The user has navigated away from the create page, so we clean up and reset.
       logger.log("Create page UI has been removed. Resetting state.");
       if (this.ui.mainCollapsibleSection) {
         this.ui.mainCollapsibleSection.remove();
@@ -133,9 +132,14 @@ export const UdioIntegration = {
       this.isIntegratedUISetup = false;
     }
 
-    // These are checked every time as their containers can appear/disappear on any page.
     this.injectLyricVaultTriggerButton();
     this.setupLyricsEditorListener();
+
+    // **MODIFIED**: We also check the state of the integrated UI when mutations happen
+    // to ensure the Style Reduction panel updates correctly.
+    if (this.isIntegratedUISetup) {
+      this.refreshIntegratedUI();
+    }
   },
 
   setupLyricsEditorListener() {
@@ -155,10 +159,9 @@ export const UdioIntegration = {
   },
 
   injectLyricVaultTriggerButton() {
-    const customLyricsRadio = document.querySelector(
-      'button[role="radio"][value="user"][data-state="checked"]'
-    );
-    if (!customLyricsRadio) {
+    const isReady = !!MANAGER_CONFIGS.lyricVault.targetInputSelector();
+
+    if (!isReady) {
       if (this.ui.lyricVaultTrigger) {
         this.ui.lyricVaultTrigger.remove();
         this.ui.lyricVaultTrigger = null;
@@ -400,12 +403,8 @@ export const UdioIntegration = {
   },
 
   refreshIntegratedUI() {
-    if (
-      !this.isDataLoaded ||
-      !this.isIntegratedUISetup ||
-      !this.ui.mainCollapsibleSection ||
-      !document.body.contains(this.ui.mainCollapsibleSection)
-    ) {
+    // This check is lightweight, so it's safe to run frequently.
+    if (!this.isIntegratedUISetup) {
       return;
     }
 
@@ -454,7 +453,6 @@ export const UdioIntegration = {
 
   renderIntegratedPresetList(manager, areaContainer, type) {
     if (
-      !this.isIntegratedUISetup ||
       !manager ||
       !areaContainer ||
       !areaContainer.isConnected ||

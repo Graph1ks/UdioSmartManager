@@ -81,7 +81,10 @@ export class PresetManager {
   async savePresets() {
     try {
       await idb.put(this.config.storageKey, this.presets);
-      UdioIntegration.refreshIntegratedUI();
+      // Refresh integrated UI only if on Udio page
+      if (window.location.hostname.includes("udio.com")) {
+        UdioIntegration.refreshIntegratedUI();
+      }
     } catch (e) {
       logger.error(
         `Failed to save presets for '${this.config.id}' to IndexedDB:`,
@@ -116,7 +119,9 @@ export class PresetManager {
       this.ui.newPresetValueInput.value = "";
       this.ui.newPresetNameInput.focus();
     }
-    UdioIntegration.refreshIntegratedUI();
+    if (window.location.hostname.includes("udio.com")) {
+      UdioIntegration.refreshIntegratedUI();
+    }
   }
 
   deletePreset(indexInFullArray) {
@@ -135,7 +140,9 @@ export class PresetManager {
       this.managerCurrentPage = 1;
     }
     this.renderPresetList();
-    UdioIntegration.refreshIntegratedUI();
+    if (window.location.hostname.includes("udio.com")) {
+      UdioIntegration.refreshIntegratedUI();
+    }
   }
 
   _handlePageButtonDragOver(event, isNextButton) {
@@ -174,14 +181,73 @@ export class PresetManager {
     }
   }
 
-  applyPresetToTarget(value) {
+  applyPresetToTarget(value, event) {
     const targetInput = this.config.targetInputSelector();
+
+    // If a target exists on the page (i.e., we are on Udio.com), apply the preset.
     if (targetInput) {
-      // Fire-and-forget dispatch. The logic in page_context_script handles the application.
-      // The previous success check was faulty as the dispatch function does not return a value.
       this.config.applyPreset(targetInput, value, this.config.id);
-    } else {
-      alert("Target input not found. Is the relevant section visible?");
+    }
+    // Otherwise, copy the value to the clipboard.
+    else {
+      navigator.clipboard
+        .writeText(value)
+        .then(() => {
+          const itemElement = event.target.closest(
+            `.${USPM_UI_PREFIX}-preset-item`
+          );
+          if (itemElement) {
+            const originalContent = itemElement.innerHTML;
+            itemElement.classList.add(`${USPM_UI_PREFIX}-copied-transient`);
+            const nameSpan = itemElement.querySelector(
+              `.${USPM_UI_PREFIX}-preset-name`
+            );
+            if (nameSpan) {
+              nameSpan.innerHTML = `${
+                createIcon(ICONS.copy).outerHTML
+              } Copied!`;
+            }
+
+            setTimeout(() => {
+              itemElement.classList.remove(
+                `${USPM_UI_PREFIX}-copied-transient`
+              );
+              itemElement.innerHTML = originalContent; // Restore original content to re-attach listeners
+              this.reAttachItemListeners(itemElement, value);
+            }, 1500);
+          }
+        })
+        .catch((err) => {
+          logger.error("Failed to copy text: ", err);
+        });
+    }
+  }
+
+  // Helper to re-attach listeners after innerHTML is overwritten
+  reAttachItemListeners(itemElement, presetValue) {
+    const originalIndex = parseInt(itemElement.dataset.originalIndex, 10);
+    itemElement.onclick = (e) => {
+      if (e.target.closest("button")) return;
+      this.applyPresetToTarget(presetValue, e);
+    };
+    const editBtn = itemElement.querySelector(`.${USPM_UI_PREFIX}-edit-btn`);
+    if (editBtn) {
+      editBtn.onclick = (e) => {
+        e.stopPropagation();
+        this.startEditPreset(originalIndex);
+      };
+    }
+    const deleteBtn = itemElement.querySelector(
+      `.${USPM_UI_PREFIX}-delete-btn`
+    );
+    if (deleteBtn) {
+      const presetName = this.presets[originalIndex].name;
+      deleteBtn.onclick = (e) => {
+        e.stopPropagation();
+        this.showConfirm(`Delete preset "${presetName}"?`, () =>
+          this.deletePreset(originalIndex)
+        );
+      };
     }
   }
 
@@ -219,7 +285,7 @@ export class PresetManager {
       item.dataset.originalIndex = originalIndex;
       item.onclick = (e) => {
         if (e.target.closest("button")) return;
-        this.applyPresetToTarget(preset.value);
+        this.applyPresetToTarget(preset.value, e);
       };
 
       const nameSpan = document.createElement("span");
@@ -353,7 +419,9 @@ export class PresetManager {
       .forEach((b) =>
         b.classList.remove(`${USPM_UI_PREFIX}-page-btn-drag-hotspot`)
       );
-    UdioIntegration.refreshIntegratedUI();
+    if (window.location.hostname.includes("udio.com")) {
+      UdioIntegration.refreshIntegratedUI();
+    }
   }
 
   _handleDragOver(e) {
@@ -406,7 +474,9 @@ export class PresetManager {
     this.presets.splice(toIndex, 0, itemToMove);
     this.savePresets();
     this.renderPresetList();
-    UdioIntegration.refreshIntegratedUI();
+    if (window.location.hostname.includes("udio.com")) {
+      UdioIntegration.refreshIntegratedUI();
+    }
   }
 
   startEditPreset(index) {
@@ -576,7 +646,9 @@ export class PresetManager {
     this.renderPresetList();
     this.cancelEditPreset();
     if (this.ui.newPresetNameInput) this.ui.newPresetNameInput.focus();
-    UdioIntegration.refreshIntegratedUI();
+    if (window.location.hostname.includes("udio.com")) {
+      UdioIntegration.refreshIntegratedUI();
+    }
   }
 
   createManagerWindow() {
@@ -743,7 +815,9 @@ export class PresetManager {
     );
     this.savePresets();
     this.renderPresetList();
-    UdioIntegration.refreshIntegratedUI();
+    if (window.location.hostname.includes("udio.com")) {
+      UdioIntegration.refreshIntegratedUI();
+    }
   }
 
   createFooterButton(icon, title, onClickHandler, extraClass = "") {
@@ -767,8 +841,8 @@ export class PresetManager {
     }
 
     const win = this.ui.managerWindow;
-    const isVisible = win.style.display === "block";
-    win.style.display = isVisible ? "none" : "block";
+    const isVisible = win.style.display !== "none";
+    win.style.display = isVisible ? "none" : "flex"; // Changed to flex for proper layout
     if (!isVisible) {
       this.itemsPerPageManager = this.DEFAULT_ITEMS_PER_MANAGER_PAGE;
       this.managerCurrentPage = 1;
@@ -986,7 +1060,7 @@ export class PresetManager {
     const originalDisplay = win.style.display;
     if (originalDisplay === "none") {
       win.style.visibility = "hidden";
-      win.style.display = "block";
+      win.style.display = "flex";
       rect = win.getBoundingClientRect();
       win.style.display = originalDisplay;
       win.style.visibility = "visible";
@@ -1075,7 +1149,9 @@ export class PresetManager {
           });
           this.savePresets();
           this.renderPresetList();
-          UdioIntegration.refreshIntegratedUI();
+          if (window.location.hostname.includes("udio.com")) {
+            UdioIntegration.refreshIntegratedUI();
+          }
           alert(`Imported ${added} new presets for ${this.config.uiTitle}.`);
         } else {
           alert("Invalid file format.");
@@ -1097,7 +1173,9 @@ export class PresetManager {
         this.managerCurrentPage = 1;
         this.savePresets();
         this.renderPresetList();
-        UdioIntegration.refreshIntegratedUI();
+        if (window.location.hostname.includes("udio.com")) {
+          UdioIntegration.refreshIntegratedUI();
+        }
         alert("All presets deleted.");
       }
     );
@@ -1109,8 +1187,8 @@ export class PresetManager {
       return;
     }
     try {
-      const localUrl = chrome.runtime.getURL(this.config.defaultPresetsUrl); // FIXED
-      const response = await fetch(localUrl); // FIXED
+      const localUrl = chrome.runtime.getURL(this.config.defaultPresetsUrl);
+      const response = await fetch(localUrl);
       if (!response.ok) {
         throw new Error(
           `HTTP error! status: ${response.status} ${response.statusText}`
@@ -1151,7 +1229,9 @@ export class PresetManager {
 
       if (addedCount > 0) this.savePresets();
       this.renderPresetList();
-      UdioIntegration.refreshIntegratedUI();
+      if (window.location.hostname.includes("udio.com")) {
+        UdioIntegration.refreshIntegratedUI();
+      }
       alert(
         `Added ${addedCount} new default presets for ${this.config.uiTitle}. ${skippedCount} duplicates were skipped.`
       );

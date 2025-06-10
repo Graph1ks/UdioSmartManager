@@ -5,6 +5,7 @@ import { USPM_UI_PREFIX, ICONS, MANAGER_CONFIGS } from "@/modules/config.js";
 import {
   createIcon,
   applyReactControlledInputPreset,
+  debounce,
 } from "@/modules/utils.js";
 import { sharedConfirmDialog } from "./sharedDialog.js";
 import { idb } from "../idb.js";
@@ -25,6 +26,9 @@ export class LyricVaultManager {
       contentInput: null,
       resizeHandle: null,
       applySelectionBtn: null,
+      // **NEW**: Search UI elements
+      searchInput: null,
+      searchContentToggle: null,
     };
     this.isDragging = false;
     this.dragOffsetX = 0;
@@ -38,6 +42,10 @@ export class LyricVaultManager {
     this.selectedItemId = null;
     this.dragState = {};
     this.isCreatingFolder = false;
+    // **NEW**: Search state
+    this.searchTerm = "";
+    this.isSearchingContent = false;
+    this.debouncedSearch = debounce(this.renderTree.bind(this), 300);
   }
 
   async loadItems() {
@@ -94,6 +102,11 @@ export class LyricVaultManager {
 
     const listPane = document.createElement("div");
     listPane.className = `${ULVM_UI_PREFIX}-list-pane`;
+
+    // **NEW**: Add search controls
+    const searchControls = this.createSearchControls();
+    listPane.appendChild(searchControls);
+
     this.ui.lyricList = document.createElement("div");
     this.ui.lyricList.className = `${ULVM_UI_PREFIX}-lyric-list`;
     listPane.appendChild(this.ui.lyricList);
@@ -115,13 +128,52 @@ export class LyricVaultManager {
     this.loadWindowSize();
     this.ensureWindowInViewport();
 
-    // Attach selection listener to the document to catch events inside the display pane
     document.addEventListener(
       "selectionchange",
       this.handleSelectionChange.bind(this)
     );
 
     this.renderTree();
+  }
+
+  // **NEW**: Method to create search UI
+  createSearchControls() {
+    const container = document.createElement("div");
+    container.style.display = "flex";
+    container.style.gap = "8px";
+    container.style.marginBottom = "8px";
+    container.style.alignItems = "center";
+
+    this.ui.searchInput = document.createElement("input");
+    this.ui.searchInput.type = "text";
+    this.ui.searchInput.placeholder = "Search lyrics...";
+    this.ui.searchInput.className = `${USPM_UI_PREFIX}-input`;
+    this.ui.searchInput.style.flexGrow = "1";
+    this.ui.searchInput.oninput = (e) => {
+      this.searchTerm = e.target.value.toLowerCase();
+      this.debouncedSearch();
+    };
+    container.appendChild(this.ui.searchInput);
+
+    const toggleLabel = document.createElement("label");
+    toggleLabel.textContent = "Content";
+    toggleLabel.style.fontSize = "0.8em";
+    toggleLabel.style.display = "flex";
+    toggleLabel.style.alignItems = "center";
+    toggleLabel.style.cursor = "pointer";
+
+    this.ui.searchContentToggle = document.createElement("input");
+    this.ui.searchContentToggle.type = "checkbox";
+    this.ui.searchContentToggle.style.marginLeft = "4px";
+    this.ui.searchContentToggle.onchange = (e) => {
+      this.isSearchingContent = e.target.checked;
+      this.renderTree();
+    };
+
+    toggleLabel.prepend(this.ui.searchContentToggle);
+    container.appendChild(toggleLabel);
+
+    return container;
   }
 
   createHeader() {
@@ -189,28 +241,70 @@ export class LyricVaultManager {
   renderTree() {
     if (!this.ui.lyricList) return;
     this.ui.lyricList.innerHTML = "";
-    const rootItems = this.items.filter((item) => item.parentId === null);
-    this.buildTreeLevel(rootItems, this.ui.lyricList, 0);
 
-    if (this.items.length === 0) {
-      this.ui.lyricList.innerHTML = `<p class="${ULVM_UI_PREFIX}-no-lyrics">No lyrics or folders.</p>`;
+    let filteredItems = this.items;
+    let parentIdsToShow = new Set();
+
+    if (this.searchTerm) {
+      const matchingItems = this.items.filter((item) => {
+        const titleMatch = item.name.toLowerCase().includes(this.searchTerm);
+        const contentMatch =
+          this.isSearchingContent &&
+          item.type === "item" &&
+          item.value &&
+          item.value.toLowerCase().includes(this.searchTerm);
+        return titleMatch || contentMatch;
+      });
+
+      matchingItems.forEach((item) => {
+        parentIdsToShow.add(item.id);
+        let current = item;
+        while (current.parentId) {
+          parentIdsToShow.add(current.parentId);
+          current = this.items.find((p) => p.id === current.parentId);
+        }
+      });
+
+      filteredItems = this.items.filter((item) => parentIdsToShow.has(item.id));
+    }
+
+    const rootItems = filteredItems.filter((item) => item.parentId === null);
+    this.buildTreeLevel(
+      rootItems,
+      this.ui.lyricList,
+      0,
+      filteredItems,
+      this.searchTerm !== ""
+    );
+
+    if (filteredItems.length === 0) {
+      this.ui.lyricList.innerHTML = `<p class="${ULVM_UI_PREFIX}-no-lyrics">${
+        this.searchTerm ? "No results found." : "No lyrics or folders."
+      }</p>`;
     }
 
     if (
       this.selectedItemId &&
-      !this.items.find((i) => i.id === this.selectedItemId)
+      !filteredItems.find((i) => i.id === this.selectedItemId)
     ) {
       this.selectedItemId = null;
     }
 
-    if (!this.selectedItemId && this.items.length > 0) {
+    if (!this.selectedItemId && filteredItems.length > 0) {
       this.selectedItemId =
-        this.items.find((i) => i.type === "item")?.id || this.items[0].id;
+        filteredItems.find((i) => i.type === "item")?.id || filteredItems[0].id;
     }
+
     this.renderDisplayPane();
   }
 
-  buildTreeLevel(itemsInLevel, parentElement, depth) {
+  buildTreeLevel(
+    itemsInLevel,
+    parentElement,
+    depth,
+    fullFilteredList,
+    isSearching
+  ) {
     itemsInLevel.forEach((item) => {
       const itemContainer = document.createElement("div");
       itemContainer.className = `${ULVM_UI_PREFIX}-tree-item`;
@@ -220,12 +314,13 @@ export class LyricVaultManager {
       itemSelf.className = `${ULVM_UI_PREFIX}-tree-item-self`;
       itemSelf.style.paddingLeft = `${8 + depth * 20}px`;
       itemSelf.dataset.id = item.id;
-      itemSelf.draggable = true;
+      itemSelf.draggable = !isSearching; // Disable drag during search
       if (item.id === this.selectedItemId) {
         itemSelf.classList.add("selected");
       }
 
-      const isFolderOpen = this.openFolders.has(item.id);
+      const isFolderOpen = this.openFolders.has(item.id) || isSearching; // Auto-open folders during search
+
       if (item.type === "folder") {
         itemSelf.classList.add("is-folder");
         if (isFolderOpen) itemSelf.classList.add("open");
@@ -240,10 +335,13 @@ export class LyricVaultManager {
         e.stopPropagation();
         this.handleItemClick(item.id);
       };
-      itemSelf.ondragstart = (e) => this.handleDragStart(e, item.id);
-      itemSelf.ondragover = (e) => this.handleDragOver(e);
-      itemSelf.ondragleave = (e) => this.handleDragLeave(e);
-      itemSelf.ondrop = (e) => this.handleDrop(e);
+
+      if (!isSearching) {
+        itemSelf.ondragstart = (e) => this.handleDragStart(e, item.id);
+        itemSelf.ondragover = (e) => this.handleDragOver(e);
+        itemSelf.ondragleave = (e) => this.handleDragLeave(e);
+        itemSelf.ondrop = (e) => this.handleDrop(e);
+      }
 
       itemContainer.appendChild(itemSelf);
 
@@ -251,8 +349,14 @@ export class LyricVaultManager {
         const childrenContainer = document.createElement("div");
         childrenContainer.className = `${ULVM_UI_PREFIX}-tree-item-children`;
         itemContainer.appendChild(childrenContainer);
-        const children = this.items.filter((i) => i.parentId === item.id);
-        this.buildTreeLevel(children, childrenContainer, depth + 1);
+        const children = fullFilteredList.filter((i) => i.parentId === item.id);
+        this.buildTreeLevel(
+          children,
+          childrenContainer,
+          depth + 1,
+          fullFilteredList,
+          isSearching
+        );
       }
       parentElement.appendChild(itemContainer);
     });
@@ -282,6 +386,8 @@ export class LyricVaultManager {
   }
 
   renderReadView(item) {
+    const isUdioContext = !!this.config.targetInputSelector();
+
     if (item.type === "folder") {
       this.ui.displayPane.innerHTML = `<div class="${ULVM_UI_PREFIX}-display-placeholder">Folder: ${item.name}</div>`;
       return;
@@ -306,20 +412,38 @@ export class LyricVaultManager {
     const controls = document.createElement("div");
     controls.className = `${ULVM_UI_PREFIX}-display-controls`;
 
-    this.ui.applySelectionBtn = this.createDisplayButton(
-      ICONS.apply_selection,
-      "Apply Selection",
-      () => this.applyLyric(null, true),
-      `${ULVM_UI_PREFIX}-apply-selection-btn`
-    );
-    this.ui.applySelectionBtn.style.display = "none";
-    controls.appendChild(this.ui.applySelectionBtn);
+    if (isUdioContext) {
+      this.ui.applySelectionBtn = this.createDisplayButton(
+        ICONS.apply_selection,
+        "Apply Selection",
+        () => this.applyLyric(null, true),
+        `${ULVM_UI_PREFIX}-apply-selection-btn`
+      );
+      this.ui.applySelectionBtn.style.display = "none";
+      controls.appendChild(this.ui.applySelectionBtn);
 
-    controls.appendChild(
-      this.createDisplayButton(ICONS.apply, "Apply", () =>
-        this.applyLyric(item.value)
-      )
-    );
+      controls.appendChild(
+        this.createDisplayButton(ICONS.apply, "Apply", () =>
+          this.applyLyric(item.value)
+        )
+      );
+    } else {
+      this.ui.applySelectionBtn = this.createDisplayButton(
+        ICONS.copy,
+        "Copy Selection",
+        (e) => this.copyLyric(e, null, true),
+        `${ULVM_UI_PREFIX}-apply-selection-btn`
+      );
+      this.ui.applySelectionBtn.style.display = "none";
+      controls.appendChild(this.ui.applySelectionBtn);
+
+      controls.appendChild(
+        this.createDisplayButton(ICONS.copy, "Copy", (e) =>
+          this.copyLyric(e, item.value)
+        )
+      );
+    }
+
     controls.appendChild(
       this.createDisplayButton(ICONS.edit, "Edit", () =>
         this.startEditing(item.id, "item")
@@ -750,7 +874,6 @@ export class LyricVaultManager {
     const isVisible = win.style.display !== "none";
     win.style.display = isVisible ? "none" : "flex";
     if (!isVisible) {
-      // this.setDefaultPosition(); // No longer needed, handled by load/ensure
       this.ensureWindowInViewport();
     }
   }
@@ -780,7 +903,7 @@ export class LyricVaultManager {
 
     let textToApply = value;
     if (isSelection) {
-      const selection = document.getSelection(); // Use document.getSelection
+      const selection = document.getSelection();
       if (selection && selection.toString().trim()) {
         textToApply = selection.toString();
       } else {
@@ -798,13 +921,44 @@ export class LyricVaultManager {
     await chrome.storage.local.set({
       [this.config.lastAppliedStorageKey]: this.selectedItemId,
     });
-    this.toggleManagerWindow(); // Close window after applying
+    this.toggleManagerWindow();
+  }
+
+  async copyLyric(event, value, isSelection = false) {
+    const button = event.currentTarget;
+    if (!button) return;
+
+    let textToCopy = value;
+    if (isSelection) {
+      const selection = window.getSelection();
+      if (selection && selection.toString().trim()) {
+        textToCopy = selection.toString();
+      } else {
+        return;
+      }
+    }
+
+    if (textToCopy === null || textToCopy === undefined) return;
+
+    try {
+      await navigator.clipboard.writeText(textToCopy);
+
+      const originalContent = button.innerHTML;
+      button.classList.add(`${USPM_UI_PREFIX}-copied-transient`);
+      button.innerHTML = `${createIcon(ICONS.confirm).outerHTML} Copied!`;
+      setTimeout(() => {
+        button.classList.remove(`${USPM_UI_PREFIX}-copied-transient`);
+        button.innerHTML = originalContent;
+      }, 1500);
+    } catch (err) {
+      logger.error("Failed to copy lyrics:", err);
+      alert("Failed to copy lyrics to clipboard.");
+    }
   }
 
   handleSelectionChange() {
     if (!this.ui.applySelectionBtn) return;
     const selection = document.getSelection();
-    // Only check for selection if the selection's anchor node is within our display pane
     const displayContent = this.ui.displayPane.querySelector(
       `.${ULVM_UI_PREFIX}-display-content`
     );

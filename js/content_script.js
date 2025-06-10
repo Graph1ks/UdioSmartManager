@@ -4,12 +4,15 @@ import { Logger } from "@/modules/logger.js";
 import { PresetManager } from "@/modules/ui/presetManager.js";
 import { LyricVaultManager } from "@/modules/ui/lyricVaultManager.js";
 import { UdioIntegration } from "@/modules/ui/integration.js";
+import { Launcher } from "@/modules/ui/launcher.js";
+import { UdioPromptGeneratorIntegrated } from "@/modules/ui/promptGeneratorUI.js";
 import { loadData } from "@/modules/dataLoader.js";
 import { MANAGER_CONFIGS } from "@/modules/config.js";
 
 const logger = new Logger("Main");
 
 function injectPageScript() {
+  if (!window.location.hostname.includes("udio.com")) return;
   try {
     const script = document.createElement("script");
     script.src = chrome.runtime.getURL("page_context_script.js");
@@ -41,9 +44,7 @@ async function main() {
 
   injectPageScript();
   injectStylesheet(chrome.runtime.getURL("css/main.css"));
-  injectStylesheet(
-    "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-  );
+  // **REMOVED**: The external font stylesheet is no longer needed.
 
   let promptGenData, isDataLoaded;
   try {
@@ -64,7 +65,9 @@ async function main() {
     isDataLoaded = false;
   }
 
-  let promptManager, styleReductionManager, lyricVaultManager;
+  await UdioPromptGeneratorIntegrated.init(promptGenData, isDataLoaded);
+
+  let promptManager, styleReductionManager, lyricVaultManager, launcher;
 
   try {
     promptManager = new PresetManager(MANAGER_CONFIGS.prompt);
@@ -90,21 +93,37 @@ async function main() {
     logger.error("FATAL: Failed to initialize LyricVault Manager.", e);
   }
 
-  // **MODIFIED:** The UdioIntegration.init() call is now the only step needed.
-  // The unreliable setTimeouts have been removed.
   if (promptManager && styleReductionManager && lyricVaultManager) {
-    try {
-      await UdioIntegration.init(
-        promptManager,
-        styleReductionManager,
-        lyricVaultManager,
-        promptGenData,
-        isDataLoaded
-      );
-    } catch (e) {
-      logger.error(
-        "CRITICAL: Failed to initialize the main UI Integration module.",
-        e
+    launcher = new Launcher(
+      promptManager,
+      styleReductionManager,
+      lyricVaultManager
+    );
+
+    chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+      if (request.action === "toggleLauncherWindow") {
+        launcher.toggleLauncherWindow();
+      }
+    });
+
+    if (window.location.hostname.includes("udio.com")) {
+      try {
+        await UdioIntegration.init(
+          promptManager,
+          styleReductionManager,
+          lyricVaultManager,
+          promptGenData,
+          isDataLoaded
+        );
+      } catch (e) {
+        logger.error(
+          "CRITICAL: Failed to initialize the main UI Integration module.",
+          e
+        );
+      }
+    } else {
+      logger.log(
+        "Not on udio.com. Skipping Udio-specific UI integration. Global launcher is ready."
       );
     }
   } else {
