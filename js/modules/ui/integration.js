@@ -97,8 +97,6 @@ export const UdioIntegration = {
   },
 
   handleMutations() {
-    // **MODIFIED**: This is the core fix. We only check for UI injection/destruction.
-    // The constant refreshing, which caused the loop, is removed.
     this.debouncedAttemptUIInjection();
   },
 
@@ -135,10 +133,29 @@ export const UdioIntegration = {
     this.injectLyricVaultTriggerButton();
     this.setupLyricsEditorListener();
 
-    // **MODIFIED**: We also check the state of the integrated UI when mutations happen
-    // to ensure the Style Reduction panel updates correctly.
+    // **FIXED**: Instead of a full refresh, we only do a lightweight state update
+    // for the Style Reduction panel. This is the only part of our UI that needs
+    // to react to external DOM changes, and this change will not cause a flicker-loop.
     if (this.isIntegratedUISetup) {
-      this.refreshIntegratedUI();
+      const srInputIsVisible =
+        !!MANAGER_CONFIGS.styleReduction.targetInputSelector();
+
+      if (this.ui.styleReductionSubSection) {
+        const header = this.ui.styleReductionSubSection.querySelector(
+          `.${UPM_UI_PREFIX}-subsection-header > span`
+        );
+        if (header) {
+          header.textContent = srInputIsVisible
+            ? "Style Reduction Presets"
+            : "Style Reduction Presets (Open Advanced Controls to use)";
+        }
+
+        // The .upm-subsection-disabled CSS class handles pointer-events and opacity.
+        this.ui.styleReductionSubSection.classList.toggle(
+          `${UPM_UI_PREFIX}-subsection-disabled`,
+          !srInputIsVisible
+        );
+      }
     }
   },
 
@@ -403,7 +420,9 @@ export const UdioIntegration = {
   },
 
   refreshIntegratedUI() {
-    // This check is lightweight, so it's safe to run frequently.
+    // This function is now only called when the lists *actually* need to be redrawn,
+    // for example, after a search or preset modification. It is no longer in the
+    // high-frequency MutationObserver loop.
     if (!this.isIntegratedUISetup) {
       return;
     }
@@ -419,10 +438,14 @@ export const UdioIntegration = {
       "styleReduction"
     );
 
+    // It is safe to also update the panel state here for robustness.
     const srInputIsVisible =
       !!MANAGER_CONFIGS.styleReduction.targetInputSelector();
-
     if (this.ui.styleReductionSubSection) {
+      this.ui.styleReductionSubSection.classList.toggle(
+        `${UPM_UI_PREFIX}-subsection-disabled`,
+        !srInputIsVisible
+      );
       const header = this.ui.styleReductionSubSection.querySelector(
         `.${UPM_UI_PREFIX}-subsection-header > span`
       );
@@ -431,23 +454,6 @@ export const UdioIntegration = {
           ? "Style Reduction Presets"
           : "Style Reduction Presets (Open Advanced Controls to use)";
       }
-
-      this.ui.styleReductionSubSection.classList.toggle(
-        `${UPM_UI_PREFIX}-subsection-disabled`,
-        !srInputIsVisible
-      );
-
-      if (this.ui.styleReductionManageButton) {
-        this.ui.styleReductionManageButton.disabled = !srInputIsVisible;
-      }
-
-      const srPresetButtons =
-        this.ui.styleReductionPresetListContainer.querySelectorAll(
-          `.${UPM_UI_PREFIX}-integrated-preset-item`
-        );
-      srPresetButtons.forEach(
-        (button) => (button.disabled = !srInputIsVisible)
-      );
     }
   },
 
